@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["https://portifolio-project-1.onrender.com","127.0.0.1"]
 
 
 # Application definition
@@ -82,14 +82,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'portifolio',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'portifolio_project',
+        'USER': 'portifolio_project_user',
+        'PASSWORD': 'EUA2hC2vPwUXt9cpQXVEInd8AOTGY5B8',
+        'HOST': 'dpg-cvnqepfgi27c7383mo3g-a.virginia-postgres.render.com',
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
+
 
 
 
