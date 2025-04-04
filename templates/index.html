@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+
+                <script>
+                        window.addEventListener("load", function () {
+                if (window.location.hash) {
+                    history.replaceState(null, null, window.location.pathname);
+                    let home = document.querySelector("#about");
+                    if (home) {
+                        home.scrollIntoView({ behavior: "smooth" });
+                    }
+                }
+            });
+      </script>
+      <title>Portifolio</title>
+</head>
+
+<body>
+    <div id="about">
+        <header>
+            <nav class="navbar">
+                <div class="logo"></div>
+                <ul class="nav-links">
+                    <li><a class="li" href="#about">About Me</a></li>
+                    <li><a class="li" href="#skills">Skills</a></li>
+                    <li><a class="li" href="#projects">Projects</a></li>
+                    <li><a class="li" href="#experience">Experience</a></li>
+                    <li><a class="li" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container">
+            {% if logo %}
+                <img src="{{ logo.image.url }}" alt="Image">
+            {% endif %}
+            <div class="text">
+                  <h1>My name is Xurshidbek </h1>
+                  <h1>I'm <span class="g-text">Back-End </span>developer</h1>
+                  <p>
+                      I was born in 2005 Ferghana city. I went to school 38 in 2012. <br>My interests to IT began when I was a 9<sum>th</sum> grade. Firsty I learned python at school from my teacher.<br>
+                      Despite the fact that there are almost no training courses for programming,<br> I decided to learn on my own.Then I started taking Python courses to learn more.<br>
+                      I graduated from school in 2023 and entered the Fergana Polytechnic Institute in the same year <br>to study in my favorite field.I want to achieve a lot as a backend developer in the future.
+                  </p>
+              </div>
+              <div class="button-container">
+                  {% for contact in contacts %}
+                        <a href="mailto:{{ contact.gmail.account }}" class="btn primary">Emailga Yozish</a>
+                        <a href="your-cv.pdf" download class="btn secondary">CV Yuklash</a>
+                  {% endfor %}
+              </div>
+              <div class="main_skills" id="skills">
+                <h1>QOBILYATLAR</h1>
+                    <div class="skills">
+                        {% for skill in skills %}
+                            <div class="row-3" >
+                                <svg width="200" height="200" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="45" stroke="#333" stroke-width="10" fill="none"/>
+                                    <circle cx="50" cy="50" r="45" stroke="#3fcf63" stroke-width="10"
+                                            fill="none" stroke-linecap="round"
+                                            stroke-dasharray="284" stroke-dashoffset="{{ skill.percentage }}"
+
+                                            transform="rotate(-90 50 50)"/>
+                                            <image x="20" y="20" width="60" height="60" href="{{ skill.logo.url }}"/>
+                                </svg>
+                                <div class="percentage-text">{{ skill.percent }}%</div>
+                            </div>
+                        {% endfor %}
+                </div>
+
+        </div>
+        <div class="projects-container" id="projects">
+            <h1 class="project-h1">PROJECTS</h1>
+                <div class="pro_column">
+                    {% for project in projects %}
+                        <div class="col-6">
+                                <a href="{{ project.link }}"><img src="{{ project.image.url }}" alt=""></a>
+                                <div class="col-6-text">
+                                    <p><span class="p-text">CLICK HERE TO VISIT</span><br>{{ project.name }}</p>
+                                    <a href="{{ project.link }}" class="right-link"></a>
+                                </div>
+                        </div>
+                    {% endfor %}
+                </div>
+        </div>
+        <h1 id="experience">EXPERIENCE</h1>
+        <div class="experience-card">
+            {% for experience in experiences %}
+                <div class="experience-section">
+                    <img src="{{ experience.company_logo.url }}" alt="Company Logo">
+                    <h2><strong>{{ experience.title }}</strong></h2>
+                    <span class="date">{{ experience.start_date_display }} - {{ experience.end_date_display }}</span>
+                </div>
+                <p class="experience-description">
+                    {{ experience.description }}
+                </p>
+            {% endfor %}
+
+        </div>
+        <footer class="footer" id="contact">
+            <div class="contact-section">
+                <h2>Contact</h2>
+                {% for contact in contacts %}
+
+                    <p class="contact-description">
+                        {{ contact.description }}
+                    </p>
+
+                    <div class="social-icons">
+                        <a href="{{ contact.instagram_account }}" class="icon"><i class="fab fa-instagram"></i></a>
+                        <a href="{{ contact.telegram_account }}" class="icon"><i class="fab fa-telegram"></i></a>
+                        <a href="{{ contact.github_account }}" class="icon"><i class="fab fa-github"></i></a>
+                        <a href="mailto:{{ contact.gmail_account }}" class="icon"><i class="fas fa-envelope"></i></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </footer>
+        <div class="boshPage" >
+            <a href="#about" class="home-link"></a>
+        </div>
+        </div>
+    </div>
+
+</body>
+</html>
